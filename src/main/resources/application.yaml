@@ -16,5 +16,3 @@ spring:
 bot:
   token: 8118155666:AAGD_OrrPsH0WyLyuF8MVzaD6VBobGzj6Bk
   name: MovieHiveBot
-server:
-  port: 8080
