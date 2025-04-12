@@ -1,0 +1,19 @@
+Configuration:
+  status: debug
+  Appenders:
+    Console:
+      name: ConsoleAppender
+      target: SYSTEM_OUT
+      PatternLayout:
+        pattern: "%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1} - %m%n"
+    File:
+      name: FileAppender
+      fileName: /Users/fahrittin/IdeaProjects/MovieHiveBot/src/main/resources/logs/app.log
+      PatternLayout:
+        pattern: "%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1} - %m%n"
+  Loggers:
+    Root:
+      level: debug
+      AppenderRef:
+        - ref: ConsoleAppender
+        - ref: FileAppender
