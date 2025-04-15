@@ -107,34 +107,38 @@ public class CommandService {
     @SneakyThrows
     public void users(Long chatId, String text, Message msg) {
 
-        SendMessage sendMessage;
+        if(userState.get(chatId) == 0){
+            SendMessage sendMessage;
 
-        if (!userService.checkIsAdmin(chatId)) {
-            executeUtils.execute(messageService.sendHaveNoPermissionMessage(chatId));
+            if (!userService.checkIsAdmin(chatId)) {
+                executeUtils.execute(messageService.sendHaveNoPermissionMessage(chatId));
+            } else {
+
+                List<User> users = userService.findByRole("USER");
+
+                if (users.isEmpty()) {
+                    executeUtils.execute(messageService.sendUsersNotFoundMessage(chatId));
+                    return;
+                }
+
+                StringBuilder messageText = new StringBuilder("👥 *User List:*\n\n");
+
+                for (User user : users) {
+                    messageText.append("🆔 Chat ID: `").append(user.getId() != null ? user.getId() : "N/A").append("`\n");
+                    messageText.append("👤 Name: *").append(user.getFirstName() != null ? user.getFirstName() : "Unknown")
+                            .append(" ").append(user.getLastName() != null ? user.getLastName() : "").append("*\n");
+                    messageText.append("💬 Username: `").append(user.getUsername() != null ? user.getUsername() : "Not Set").append("`\n");
+                    messageText.append("🔹 Role: `").append(user.getRole() != null ? user.getRole() : "Unassigned").append("`\n");
+                    messageText.append("➖➖➖➖➖➖➖➖\n");
+                }
+
+                sendMessage = messageService.generateSendMessage(chatId, messageText.toString());
+                executeUtils.execute(sendMessage);
+
+
+            }
         } else {
-
-            List<User> users = userService.findByRole("USER");
-
-            if (users.isEmpty()) {
-                executeUtils.execute(messageService.sendUsersNotFoundMessage(chatId));
-                return;
-            }
-
-            StringBuilder messageText = new StringBuilder("👥 *User List:*\n\n");
-
-            for (User user : users) {
-                messageText.append("🆔 Chat ID: `").append(user.getId() != null ? user.getId() : "N/A").append("`\n");
-                messageText.append("👤 Name: *").append(user.getFirstName() != null ? user.getFirstName() : "Unknown")
-                        .append(" ").append(user.getLastName() != null ? user.getLastName() : "").append("*\n");
-                messageText.append("💬 Username: `").append(user.getUsername() != null ? user.getUsername() : "Not Set").append("`\n");
-                messageText.append("🔹 Role: `").append(user.getRole() != null ? user.getRole() : "Unassigned").append("`\n");
-                messageText.append("➖➖➖➖➖➖➖➖\n");
-            }
-
-            sendMessage = messageService.generateSendMessage(chatId, messageText.toString());
-            executeUtils.execute(sendMessage);
-
-
+            executeUtils.execute(messageService.sendSomethingWrongMessage(chatId));
         }
 
     }
@@ -276,7 +280,8 @@ public class CommandService {
 
     @SneakyThrows
     public void backCommand(Long chatId, String text, Message msg) {
-        executeUtils.execute(messageService.generateSendMessage(chatId, "Not Available Yet !"));
+
+
     }
 
 

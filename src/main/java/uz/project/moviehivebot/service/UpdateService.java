@@ -59,7 +59,7 @@ public class UpdateService {
             case "\uD83D\uDCE2 Add Advertisement" -> commandService.addAdvertisementCommand(chatId, text, msg);
             case "✅ Yes" -> commandService.yesCommand(chatId , text , msg);
             case "❌ No" -> commandService.noCommand(chatId , text , msg);
-            case "\uD83D\uDD19 Back" -> commandService.backCommand(chatId, text, msg);
+            case "\uD83D\uDD19 Back" -> commandService.mainMenuCommand(chatId);
             case "\uD83C\uDFE0 Main menu" -> commandService.mainMenuCommand(chatId);
             default -> {
                 if (commandService.checkState(chatId)){
