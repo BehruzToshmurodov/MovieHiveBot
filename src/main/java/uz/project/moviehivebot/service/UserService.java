@@ -18,7 +18,6 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    @Transactional
     public void checkExistingUser(org.telegram.telegrambots.meta.api.objects.User user) {
         User u = userRepository.getUserById(user.getId());
         if (u == null) {
