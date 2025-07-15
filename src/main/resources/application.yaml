@@ -10,10 +10,12 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       dialect: org.hibernate.dialect.PostgreSQLDialect
 
 bot:
-  token: 8118155666:AAGD_OrrPsH0WyLyuF8MVzaD6VBobGzj6Bk
   name: MovieHiveBot
+  token: 8118155666:AAGD_OrrPsH0WyLyuF8MVzaD6VBobGzj6Bk
+  webhook-path: /webhook/update
+  webhook-url: https://comparative-calli-pdpteam-091286b8.koyeb.app/webhook/update
