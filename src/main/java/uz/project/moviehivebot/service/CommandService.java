@@ -51,7 +51,7 @@ public class CommandService {
 
     private final UserRepository userRepository;
 
-    public void startCommand(Long chatId, String text, Message msg) throws TelegramApiException {
+    public void startCommand(Long chatId, Message msg) throws TelegramApiException {
 
         userService.checkExistingUser(msg.getFrom());
         userState.put(chatId, 0);
@@ -299,6 +299,9 @@ public class CommandService {
                 user.setState(null);
                 userRepository.save(user);
             } else {
+                User user = userService.getUserByChatId(String.valueOf(chatId));
+                user.setState(null);
+                userRepository.save(user);
                 sendMessage = messageService.sendUserOptionMessage(chatId);
                 buttonService.buttonMenu(sendMessage);
             }

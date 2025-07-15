@@ -3,13 +3,14 @@ spring:
     name: MovieHiveBot
 
   datasource:
-    url: jdbc:postgresql://dpg-cvt8unre5dus73a4i4lg-a.frankfurt-postgres.render.com:5432/moviehive_db
-    username: moviehive_db_user
-    password: byelYFTaloSKCDRl6G6j8OcLGz1Tai6W
+    url: jdbc:postgresql://aws-0-ap-northeast-1.pooler.supabase.com:6543/postgres?sslmode=require
+    username: postgres.otribfsjckdzcdfzuwgg
+    password: MovieHiveDatabase
+    driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     properties:
       dialect: org.hibernate.dialect.PostgreSQLDialect
 
