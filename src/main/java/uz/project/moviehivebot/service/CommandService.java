@@ -78,7 +78,7 @@ public class CommandService {
     @SneakyThrows
     public void moviesCommand(Long chatId, String text, Message msg) {
 
-        if (userState.get(chatId) == 0 || userState.get(chatId) == null ){
+        if (userState.getOrDefault(chatId, 0) == 0 ){
             userState.put(chatId, 1);
 
             ReplyKeyboardMarkup buttons = buttonService.createButtons(List.of("\uD83C\uDFE0 Main menu"), false);
@@ -103,7 +103,7 @@ public class CommandService {
     @SneakyThrows
     public void users(Long chatId, String text, Message msg) {
 
-        if( userState.get(chatId) == 0 || userState.get(chatId) == null ){
+        if( userState.getOrDefault(chatId, 0) == 0 ){
             SendMessage sendMessage;
 
             if (!userService.checkIsAdmin(chatId)) {
@@ -310,7 +310,7 @@ public class CommandService {
     @SneakyThrows
     public void blockUserCommand(Long chatId, String text, Message msg) {
 
-        if (userState.get(chatId) == 0) {
+        if (userState.getOrDefault(chatId, 0) == 0) {
             if (userService.checkIsAdmin(chatId)) {
 
                 SendMessage sendMessage = messageService.sendBlockUserCommandMessage(chatId);
@@ -393,7 +393,7 @@ public class CommandService {
     @SneakyThrows
     public void unblockUserCommand(Long chatId, String text, Message msg) {
 
-        if (userState.get(chatId) == 0) {
+        if (userState.getOrDefault(chatId, 0) == 0) {
             if (userService.checkIsAdmin(chatId)) {
 
                 SendMessage sendMessage = messageService.sendUnblockUserSelectionMessage(chatId);
