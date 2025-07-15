@@ -107,7 +107,7 @@ public class CommandService {
     @SneakyThrows
     public void users(Long chatId, String text, Message msg) {
 
-        if(userState.get(chatId) == 0){
+        if( userState.get(chatId) == 0 || userState.get(chatId) == null ){
             SendMessage sendMessage;
 
             if (!userService.checkIsAdmin(chatId)) {
