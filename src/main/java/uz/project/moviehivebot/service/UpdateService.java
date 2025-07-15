@@ -47,7 +47,7 @@ public class UpdateService {
         switch (text) {
 
             case "/start" -> commandService.startCommand(chatId, msg);
-            case "\uD83C\uDFA5 Movies" -> commandService.moviesCommand(chatId, text, msg);
+            case "\uD83C\uDFA5 Kinolar" -> commandService.moviesCommand(chatId, text, msg);
             case "\uD83D\uDC65 Users" -> commandService.users(chatId, text, msg);
             case "\uD83D\uDC51 *Manage Super Admins*" -> commandService.managementOfSuperAdmins(chatId, text, msg);
             case "\uD83C\uDFAC Upload Movie" -> commandService.uploadMovieCommand(chatId, text, msg);
