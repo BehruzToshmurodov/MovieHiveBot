@@ -22,10 +22,6 @@ import uz.project.moviehivebot.entity.enums.Status;
 import uz.project.moviehivebot.repository.UserRepository;
 import uz.project.moviehivebot.utils.ExecuteUtils;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -82,7 +78,7 @@ public class CommandService {
     @SneakyThrows
     public void moviesCommand(Long chatId, String text, Message msg) {
 
-        if (userState.get(chatId) == 0){
+        if (userState.get(chatId) == 0 || userState.get(chatId) == null ){
             userState.put(chatId, 1);
 
             ReplyKeyboardMarkup buttons = buttonService.createButtons(List.of("\uD83C\uDFE0 Main menu"), false);
