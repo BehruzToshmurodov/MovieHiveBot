@@ -63,12 +63,13 @@ public class MessageService {
         }
 
         String str = """
-                Hello, %s! 🎬✨
-                
-                Welcome to our bot! 😊 We're delighted to have you here.
-                
-                Stay with us and enjoy a world of incredible movies! 🍿🎥
-                """.formatted(userNameDisplay);
+        Salom, %s! 🎬✨
+
+        Botimizga xush kelibsiz! 😊 Sizni bu yerda ko‘rib turganimizdan xursandmiz.
+
+        Biz bilan qoling va ajoyib filmlar olamidan bahramand bo‘ling! 🍿🎥
+        """.formatted(userNameDisplay);
+
 
         return generateSendMessage(chatId, str);
     }
@@ -105,29 +106,31 @@ public class MessageService {
 
     public SendMessage sendUserOptionMessage(Long chatId) {
         String str = """
-                🏠 *Main Menu* 📌
-                
-                Select an option below to proceed: ⬇️
-                
-                🔹 *Movies* – Find movies by their code. 🎥
-                
-                Please tap the button below to continue. ⏬
-                """;
+        🏠 *Asosiy menyu* 📌
+        
+        Quyidagi bo‘limlardan birini tanlang: ⬇️
+        
+        🔹 *Kinolar* – Kod orqali kinoni toping. 🎥
+        
+        Davom etish uchun pastdagi tugmani bosing. ⏬
+        """;
         return generateSendMessage(chatId, str);
+
 
     }
 
     public SendMessage sendUserMovieCodeMessage(Long chatId) {
         String enterMovieCodeMessage = """
-                \uD83C\uDFAC *Movie Selection*
-                
-                Please enter the movie code below to continue. 🎟️
-                
-                🔎 You can find the code on our Instagram page:
-                👉 [@toshmurodov__23](https://instagram.com/toshmurodov__23)
-                
-                        \uD83D\uDC47
-                """;
+        \uD83C\uDFAC *Kino tanlash*
+
+        Davom etish uchun quyiga kino kodini kiriting. 🎟️
+
+        🔎 Kodni bizning Instagram sahifamizda topishingiz mumkin:
+        👉 [@toshmurodov__23](https://instagram.com/toshmurodov__23)
+
+                \uD83D\uDC47
+        """;
+
         return generateSendMessage(chatId, enterMovieCodeMessage);
     }
 
