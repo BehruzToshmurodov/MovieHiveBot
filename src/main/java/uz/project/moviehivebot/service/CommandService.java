@@ -143,7 +143,7 @@ public class CommandService {
     @SneakyThrows
     public void addSuperAdmin(Long chatId, String text, Message msg) {
 
-        if (userState.get(chatId) == 1) {
+        if (userState.getOrDefault(chatId, 0) == 1) {
             if (userService.checkIsAdmin(chatId)) {
 
                 ReplyKeyboardRemove keyboardRemove = new ReplyKeyboardRemove();
@@ -222,7 +222,7 @@ public class CommandService {
     @SneakyThrows
     public void deleteSuperAdminCommand(Long chatId, String text, Message msg) {
 
-        if (userState.get(chatId) == 1) {
+        if (userState.getOrDefault(chatId, 0) == 1) {
             if (userService.checkIsAdmin(chatId)) {
 
                 SendMessage sendMessage = messageService.sendRemoveFromSuperAdminMessage(chatId);
@@ -283,7 +283,8 @@ public class CommandService {
 
     @SneakyThrows
     public void mainMenuCommand(Long chatId) {
-        if (userState.get(chatId) > 0) {
+        if (userState.getOrDefault(chatId, 0) > 0) {
+
             userState.put(chatId, 0);
 
             SendMessage sendMessage;
