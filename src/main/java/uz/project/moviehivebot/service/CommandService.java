@@ -454,7 +454,7 @@ public class CommandService {
             userState.put(chatId, 4);
 
             User user = userService.getUserByChatId(String.valueOf(chatId));
-            user.setState(AddAdvertisementState.WAITING_FOR_IMAGE.name());
+            user.setState(AddAdvertisementState.WAITING_FOR_DESCRIPTION.name());
             userRepository.save(user);
 
             SendMessage sendMessage = messageService.sendDescriptionForAdvertisementMessage(chatId);
