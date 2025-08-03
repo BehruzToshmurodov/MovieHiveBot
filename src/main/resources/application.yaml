@@ -16,6 +16,7 @@ spring:
 
 bot:
   name: MovieHiveBot
-  token: 8118155666:AAGD_OrrPsH0WyLyuF8MVzaD6VBobGzj6Bk
+  token: 8118155666:AAFB2Kab2M55hgpCWIw--ksOZzj9zol8T44
   webhook-path: /webhook/update
-  webhook-url: https://youngest-lindie-pdpteam-e0ae510c.koyeb.app/webhook/update?secret-token=MovieHiveSecret123
+  webhook-url: https://api.telegram.org/bot8118155666:AAFB2Kab2M55hgpCWIw--ksOZzj9zol8T44/setWebhook?url=https://youngest-lindie-pdpteam-e0ae510c.koyeb.app/webhook/update&secret_token=MovieHiveSecret123
+

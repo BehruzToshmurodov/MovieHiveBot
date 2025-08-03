@@ -34,12 +34,10 @@ public class UpdateController {
             return;
         }
 
-
         if (update.hasCallbackQuery()) {
             updateService.processCallbackQuery(update.getCallbackQuery());
             return;
         }
-
 
         Message message = update.getMessage();
 

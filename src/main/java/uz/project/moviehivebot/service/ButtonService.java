@@ -29,7 +29,7 @@ public class ButtonService {
 
         User user = userService.getUserByChatId(message.getChatId());
         if (user.getRole().equals(Role.ADMIN.toString()) || user.getRole().equals(Role.SUPER_ADMIN.toString())) {
-            message.setReplyMarkup((createButtons(List.of("\uD83D\uDC65 Users", "\uD83C\uDFAC Upload Movie", "\uD83D\uDC51 *Manage Super Admins*" , "\uD83D\uDEAB Block User" , "\uD83D\uDD13 Unblock User" , "\uD83D\uDCE2 Add Advertisement" ), false)));
+            message.setReplyMarkup((createButtons(List.of("\uD83D\uDC65 Users", "\uD83C\uDFAC Upload Movie", "\uD83D\uDC51 *Manage Super Admins*", "\uD83D\uDEAB Block User", "\uD83D\uDD13 Unblock User", "\uD83D\uDCE2 Add Advertisement"), false)));
         } else
             message.setReplyMarkup(createButtons(List.of("\uD83C\uDFA5 Kinolar"), false));
 
@@ -84,7 +84,7 @@ public class ButtonService {
     }
 
 
-    private static InlineKeyboardButton getInlineKeyboardButton(User user , String callData) {
+    private static InlineKeyboardButton getInlineKeyboardButton(User user, String callData) {
         InlineKeyboardButton button = new InlineKeyboardButton();
 
         String buttonText = "";
@@ -105,7 +105,7 @@ public class ButtonService {
         }
 
         button.setText(buttonText);
-        button.setCallbackData( callData + user.getId());
+        button.setCallbackData(callData + user.getId());
 
         return button;
     }
